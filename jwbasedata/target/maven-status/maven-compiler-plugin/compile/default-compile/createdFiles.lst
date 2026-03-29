@@ -1,0 +1,16 @@
+com\jw\jwbasedata\mapper\UserMapper.class
+com\jw\jwbasedata\common\page\PageResult.class
+com\jw\jwbasedata\service\impl\UserServiceImpl.class
+com\jw\jwbasedata\vo\UserVO.class
+com\jw\jwbasedata\entity\User.class
+com\jw\jwbasedata\common\exception\GlobalExceptionHandler.class
+com\jw\jwbasedata\JwBaseDataApplication.class
+com\jw\jwbasedata\service\UserService.class
+com\jw\jwbasedata\common\page\PageQuery.class
+com\jw\jwbasedata\common\exception\BusinessException.class
+com\jw\jwbasedata\common\result\ResultCode.class
+com\jw\jwbasedata\config\MybatisPlusConfig.class
+com\jw\jwbasedata\common\result\Result.class
+com\jw\jwbasedata\dto\UserQueryDTO.class
+com\jw\jwbasedata\config\SwaggerConfig.class
+com\jw\jwbasedata\controller\UserController.class

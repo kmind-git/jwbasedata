@@ -1,0 +1,24 @@
+# 开发环境配置 (仅用于本地开发)
+server:
+  port: 8080
+
+spring:
+  application:
+    name: jwbasedata
+  datasource:
+    url: jdbc:mysql://localhost:3306/jwbasedata?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.jw.jwbasedata.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
