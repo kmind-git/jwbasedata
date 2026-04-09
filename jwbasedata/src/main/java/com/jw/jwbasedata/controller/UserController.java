@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * 用户控制器
  *
@@ -30,16 +32,7 @@ public class UserController {
     @Operation(summary = "分页查询用户列表", description = "根据条件分页查询用户列表")
     @GetMapping
     public Result<PageResult<UserVO>> getUserPage(
-            @Parameter(description = "页码") @RequestParam(defaultValue = "1") Integer page,
-            @Parameter(description = "每页大小") @RequestParam(defaultValue = "10") Integer size,
-            @Parameter(description = "用户名") @RequestParam(required = false) String username,
-            @Parameter(description = "邮箱") @RequestParam(required = false) String email) {
-
-        UserQueryDTO queryDTO = new UserQueryDTO();
-        queryDTO.setPage(page);
-        queryDTO.setSize(size);
-        queryDTO.setUsername(username);
-        queryDTO.setEmail(email);
+            @Parameter(description = "查询条件") @Valid UserQueryDTO queryDTO) {
 
         PageResult<UserVO> result = userService.getUserPage(queryDTO);
         return Result.success(result);

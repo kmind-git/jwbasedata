@@ -57,3 +57,10 @@ logging:
     path: ./logs
   log4j2:
     config-file: classpath:log4j2-spring.xml
+
+# API密钥配置
+app:
+  api-key:
+    key: ${API_KEY:prod-api-key-secure-123456}  # 生产环境API密钥，通过环境变量API_KEY配置
+    enabled: true
+    header-name: X-API-KEY
