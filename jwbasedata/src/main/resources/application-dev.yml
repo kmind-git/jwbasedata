@@ -22,3 +22,10 @@ springdoc:
     enabled: true
   swagger-ui:
     enabled: true
+
+# API密钥配置（开发环境）
+app:
+  api-key:
+    key: dev-api-key-123456  # 开发环境API密钥
+    enabled: false  # 开发环境默认禁用API密钥验证，方便测试
+    header-name: X-API-KEY

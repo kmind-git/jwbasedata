@@ -79,6 +79,21 @@ spring:
     password: 密码
 ```
 
+**API 密钥配置**（生产环境必填）：
+
+默认启用了 API 密钥验证，所有 `/api/**` 接口需要提供正确的 API 密钥。配置方式：
+
+1. **环境变量**（推荐）：设置 `API_KEY` 环境变量，值为你的 API 密钥
+2. **配置文件**：在 `config/application.yml` 中直接设置 `app.api-key.key` 值
+
+生产环境建议通过环境变量配置：
+
+```bash
+export API_KEY=your-secure-api-key-here
+```
+
+开发/测试环境可禁用 API 密钥验证（设置 `app.api-key.enabled: false`）。
+
 ### 6. 启动服务
 
 ```bash
