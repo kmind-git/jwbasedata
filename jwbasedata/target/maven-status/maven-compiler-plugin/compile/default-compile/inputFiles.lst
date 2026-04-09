@@ -4,8 +4,11 @@ D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\service\UserS
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\controller\UserController.java
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\common\page\PageResult.java
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\common\result\ResultCode.java
+D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\config\WebMvcConfig.java
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\entity\User.java
+D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\config\ApiKeyConfig.java
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\config\SwaggerConfig.java
+D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\common\interceptor\ApiKeyInterceptor.java
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\mapper\UserMapper.java
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\common\exception\BusinessException.java
 D:\projects\claude test\jwbasedata\src\main\java\com\jw\jwbasedata\config\MybatisPlusConfig.java
