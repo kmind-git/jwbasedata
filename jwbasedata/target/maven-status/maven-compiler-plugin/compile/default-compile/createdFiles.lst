@@ -7,10 +7,13 @@ com\jw\jwbasedata\common\exception\GlobalExceptionHandler.class
 com\jw\jwbasedata\JwBaseDataApplication.class
 com\jw\jwbasedata\service\UserService.class
 com\jw\jwbasedata\common\page\PageQuery.class
+com\jw\jwbasedata\config\ApiKeyConfig.class
 com\jw\jwbasedata\common\exception\BusinessException.class
 com\jw\jwbasedata\common\result\ResultCode.class
 com\jw\jwbasedata\config\MybatisPlusConfig.class
 com\jw\jwbasedata\common\result\Result.class
+com\jw\jwbasedata\config\WebMvcConfig.class
 com\jw\jwbasedata\dto\UserQueryDTO.class
 com\jw\jwbasedata\config\SwaggerConfig.class
+com\jw\jwbasedata\common\interceptor\ApiKeyInterceptor.class
 com\jw\jwbasedata\controller\UserController.class
