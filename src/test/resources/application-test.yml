@@ -1,0 +1,68 @@
+# 测试环境配置
+server:
+  port: 0  # 随机端口
+
+spring:
+  application:
+    name: jwbasedata-test
+
+  # H2 内存数据库配置
+  datasource:
+    url: jdbc:h2:mem:jwbasedata_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+
+  # 初始化数据库
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/test-data.sql
+
+  # 禁用 Flyway/Liquibase 等迁移工具
+  flyway:
+    enabled: false
+  liquibase:
+    enabled: false
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.jw.jwbasedata.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 测试时显示SQL
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# Swagger 配置（测试环境启用）
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+# 日志配置
+logging:
+  level:
+    root: WARN
+    com.jw.jwbasedata: DEBUG
+    org.springframework: WARN
+    org.mybatis: DEBUG
+  file:
+    path: ./logs-test
+
+# API密钥配置（测试环境）
+app:
+  api-key:
+    key: test-api-key-123456  # 测试环境API密钥
+    enabled: false  # 测试环境禁用API密钥验证，方便测试
+    header-name: X-API-KEY

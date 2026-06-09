@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <!-- 定义变量 -->
+    <Properties>
+        <Property name="LOG_PATH">./logs</Property>
+        <Property name="APP_NAME">jwbasedata</Property>
+        <Property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- 控制台输出 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${PATTERN}"/>
+        </Console>
+
+        <!-- INFO 级别日志文件 -->
+        <RollingFile name="FileInfo" fileName="${LOG_PATH}/${APP_NAME}-info.log"
+                     filePattern="${LOG_PATH}/${APP_NAME}-info-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <!-- 按天滚动 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 单文件最大 100MB -->
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <!-- 保留最近 30 个文件 -->
+            <DefaultRolloverStrategy max="30">
+                <Delete basePath="${LOG_PATH}" maxDepth="1">
+                    <IfFileName glob="${APP_NAME}-info-*.log"/>
+                    <IfLastModified age="30d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+            <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+
+        <!-- WARN 级别日志文件 -->
+        <RollingFile name="FileWarn" fileName="${LOG_PATH}/${APP_NAME}-warn.log"
+                     filePattern="${LOG_PATH}/${APP_NAME}-warn-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30">
+                <Delete basePath="${LOG_PATH}" maxDepth="1">
+                    <IfFileName glob="${APP_NAME}-warn-*.log"/>
+                    <IfLastModified age="30d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+            <LevelRangeFilter minLevel="WARN" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+
+        <!-- ERROR 级别日志文件 -->
+        <RollingFile name="FileError" fileName="${LOG_PATH}/${APP_NAME}-error.log"
+                     filePattern="${LOG_PATH}/${APP_NAME}-error-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30">
+                <Delete basePath="${LOG_PATH}" maxDepth="1">
+                    <IfFileName glob="${APP_NAME}-error-*.log"/>
+                    <IfLastModified age="30d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+
+        <!-- 异步日志 Appender (提升性能) -->
+        <Async name="AsyncInfo">
+            <AppenderRef ref="FileInfo"/>
+        </Async>
+        <Async name="AsyncWarn">
+            <AppenderRef ref="FileWarn"/>
+        </Async>
+        <Async name="AsyncError">
+            <AppenderRef ref="FileError"/>
+        </Async>
+    </Appenders>
+
+    <Loggers>
+        <!-- 项目日志级别 -->
+        <Logger name="com.jw.jwbasedata" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="AsyncInfo"/>
+            <AppenderRef ref="AsyncWarn"/>
+            <AppenderRef ref="AsyncError"/>
+        </Logger>
+
+        <!-- Spring 框架日志 -->
+        <Logger name="org.springframework" level="info"/>
+
+        <!-- MyBatis 日志 -->
+        <Logger name="com.jw.jwbasedata.mapper" level="debug"/>
+
+        <!-- 根日志配置 -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="AsyncInfo"/>
+            <AppenderRef ref="AsyncWarn"/>
+            <AppenderRef ref="AsyncError"/>
+        </Root>
+    </Loggers>
+</Configuration>
